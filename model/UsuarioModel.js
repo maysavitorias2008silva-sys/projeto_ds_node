@@ -1,13 +1,37 @@
 const db = require("../config/database");
 
-const criarUsuario = async(
+const criarUsuario = async (
     nome,
-    Login,
-    senha,
+    email,
+    telefone,
+    cep,
+    endereco,
+    numero,
+    complemento,
+    bairro,
+    cidade,
+    estado,
+    login,
+    senha
 ) => {
-    const sql =`INSERT INTO
-                 usuario(nome, login, senha)
-                 Values (?,?,?)`;
+    
+    const sql = `
+    INSERT INTO usuarios
+    (
+        nome,
+        email,
+        telefone,
+        cep,
+        endereco,
+        numero,
+        complemento,
+        bairro,
+        cidade,
+        estado,
+        login,
+        senha
+        );
+                 VALUES (?,?,?,?,?,?,?,?,?,?,?,?)`;
 const [resultado] = await db.execute(sql, [nome, Login, senha]);
 return resultado;
 }
